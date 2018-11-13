@@ -3,12 +3,15 @@ import "./App.css";
 import axios from "axios";
 
 import PlayerList from "./components/PlayerList";
+import Roster from "./components/Roster";
+
 
 class App extends Component {
 
   // default State object
   state = {
-    players: []
+    players: [],
+    selectedPlayers: [1,2,3]
   };
 
   componentDidMount() {
@@ -64,6 +67,7 @@ class App extends Component {
         ...
 
         <PlayerList players={this.state.players} />
+        <Roster players={this.state.selectedPlayers} />
       </div>
     );
   }
