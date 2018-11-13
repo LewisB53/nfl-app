@@ -6,7 +6,7 @@ import Player from "./Player";
 
 function PlayerList(props) {
   return (
-    <div>
+    <div> Your Roster
       {props.players.map(c => <Player key={c.id} name={c.name} weekPts={c.weekPts}/>)}
      </div> 
   ); 

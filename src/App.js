@@ -11,7 +11,7 @@ class App extends Component {
   // default State object
   state = {
     players: [],
-    selectedPlayers: [1,2,3]
+    selectedPlayers: []
   };
 
   componentDidMount() {
@@ -48,10 +48,13 @@ class App extends Component {
           };
         });
 
+        const roster = [newplayers[1],newplayers[1],newplayers[1]];
+
         // create a new "State" object without mutating 
         // the original State object. 
         const newState = Object.assign({}, this.state, {
-          players: newplayers
+          players: newplayers,
+          selectedPlayers: roster
         });
 
         // store the new state object in the component's state
