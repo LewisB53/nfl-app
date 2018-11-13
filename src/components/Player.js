@@ -1,16 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Contact(props) {
+function Player(props) {
   return (
-    <div className="contact">
+    <div className="Player">
       <span>{props.name}</span>
+      <span> Fantasy Points {props.weekPts} </span>
     </div>
   );
 }
 
-Contact.propTypes = {
+Player.propTypes = {
   name: PropTypes.string.isRequired
+
 };
 
-export default Contact;
+export default Player;

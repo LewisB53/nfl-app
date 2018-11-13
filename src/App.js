@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 import "./App.css";
 import axios from "axios";
 
-import ContactList from "./components/ContactList";
-
-const contacts = [
-  { id: 1, name: "Leanne Graham" },
-  { id: 2, name: "Ervin Howell" },
-  { id: 3, name: "Clementine Bauch" },
-  { id: 4, name: "Patricia Lebsack" }
-];
+import PlayerList from "./components/PlayerList";
 
 class App extends Component {
 
   // default State object
   state = {
-    contacts: []
+    players: []
   };
 
   componentDidMount() {
@@ -23,33 +16,39 @@ class App extends Component {
       .get("http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week=1&format=json")
       .then(response => {
 
-        // create an array of contacts only with relevant data
+        // create an playersay of players only with relevant data
         console.log(response.data);
 
-        const wholeobject = response.data;
-        const findOnePlayer = wholeobject.players[213];
-        console.log(findOnePlayer.name);
-        console.log(findOnePlayer.weekPts);
-        console.log(findOnePlayer.position);
-        console.log(findOnePlayer.stats);
+        const players = response.data.players;
+        
+  
+   
+
+        // console.log(players[213].name);
+        // console.log(players.weekPts);
+        // console.log(players.position);
+        // console.log(players.stats);
+
+      
 
 
+       
 
-        // const playersArray = wholeobject.players;
+     
 
-        // const newContacts = playersArray
-
-        // const newContacts = response.data.players.map(c => {
-        //   return {
-        //     id: c.id,
-        //     name: c.name
-        //   };
-        // });
+        const newplayers = players.map(c => {
+          return {
+          
+            id: c.id,
+            name: c.name,
+            weekPts: c.weekPts
+          };
+        });
 
         // create a new "State" object without mutating 
         // the original State object. 
         const newState = Object.assign({}, this.state, {
-          contacts: newContacts
+          players: newplayers
         });
 
         // store the new state object in the component's state
@@ -64,7 +63,7 @@ class App extends Component {
         
         ...
 
-        <ContactList contacts={this.state.contacts} />
+        <PlayerList players={this.state.players} />
       </div>
     );
   }
