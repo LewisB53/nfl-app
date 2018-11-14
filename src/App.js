@@ -35,20 +35,23 @@ class App extends Component {
       
 
 
-       
+        var newplayers = players.filter(function (el) {
+          return el.name === "Derek Carr";
+        });
+        console.log("found derek" + newplayers[0].name )
 
      
 
-        const newplayers = players.map(c => {
-          return {
-          
-            id: c.id,
-            name: c.name,
-            weekPts: c.weekPts
-          };
-        });
+        // const newplayers = players.filter(c => {
+        //   if (c.name === "Derek Carr")
+        //   return {
+        //       id: c.id,
+        //       name: c.name,
+        //       weekPts: c.weekPts
+        //   };
+        // });
 
-        const roster = [newplayers[1],newplayers[1],newplayers[1]];
+        const roster = [newplayers[0],newplayers[0],newplayers[0]];
 
         // create a new "State" object without mutating 
         // the original State object. 
