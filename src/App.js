@@ -10,13 +10,13 @@ class App extends Component {
 
   // default State object
   state = {
+    week: 1,
     players: [],
     selectedPlayers: []
   };
 
   componentDidMount() {
-    axios
-      .get("http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week=1&format=json")
+    axios.get("http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week="+ this.state.week +"&format=json")
       .then(response => {
 
         // create an playersay of players only with relevant data
@@ -36,20 +36,11 @@ class App extends Component {
 
 
         var newplayers = players.filter(function (el) {
-          return el.name === "Derek Carr";
+          return el.name === "Tom Brady";
         });
-        console.log("found derek" + newplayers[0].name )
+        console.log("Found Players: " + newplayers[0].name )
 
-     
-
-        // const newplayers = players.filter(c => {
-        //   if (c.name === "Derek Carr")
-        //   return {
-        //       id: c.id,
-        //       name: c.name,
-        //       weekPts: c.weekPts
-        //   };
-        // });
+    
 
         const roster = [newplayers[0],newplayers[0],newplayers[0]];
 
