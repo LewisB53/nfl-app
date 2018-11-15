@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
-import "./App.css";
-
-import PlayerList from "./components/PlayerList";
-import Roster from "./components/Roster";
-import StatsToDate from './components/StatsToDate';
+import './App.css';
+import Main from './containers/Main';
 
 
 class App extends Component {
-
-  // default State object
-  state = {
-    week: 2,
-    players: [],
-    selectedPlayers: []
-  };
-
-
   render() {
     return (
       <div className="App">
-
-        <PlayerList players={this.state.players} />
-        <Roster players={this.state.selectedPlayers} />
-
+        <header className="App-header">
+            <Main/>
+        </header>
       </div>
     );
   }

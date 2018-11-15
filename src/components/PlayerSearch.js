@@ -1,39 +1,64 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
 
-onSearch = (e) => {
+class PlayerSearch extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { hits: null };
+  }
+
+  onSearch = (e) => {
     e.preventDefault();
 
     const { value } = this.input;
 
     if (value === '') {
       return;
-    } 
+    }
 
-    const cachedName = localStorage.getItem(value);
+    const cachedHits = localStorage.getItem(value);
+    if (cachedHits) {
+      this.setState({ hits: JSON.parse(cachedHits) });
+      return;
+    }
 
+    fetch('https://hn.algolia.com/api/v1/search?query=' + value)
+      .then(response => response.json())
+      .then(result => this.onSetResult(result, value));
   }
 
+  onSetResult = (result, key) => {
+    localStorage.setItem(key, JSON.stringify(result.hits));
+    this.setState({ hits: result.hits });
+  }
 
+  render() {
+    return (
+      <div>
+        <h1>Search Hacker News with Local Storage</h1>
+        <p>
+          There shouldn't be a second network request,
+          when you search for something twice.
+        </p>
 
-
-
-function Player(props) {
-  return (
-    <div className="Player">
-      <form type="submit" onSubmit={this.onSearch}>
+        <form type="submit" onSubmit={this.onSearch}>
           <input type="text" ref={node => this.input = node} />
           <button type="button">Search</button>
         </form>
-      <span>{props.name}</span>
-      <span> Fantasy Points {props.weekPts} </span>
-    </div>
-  );
+
+        {
+          this.state.hits &&
+          this.state.hits.map(item => <div key={item.objectID}>{item.title}</div>)
+        }
+      </div>
+    );
+  }
 }
 
-Player.propTypes = {
-  name: PropTypes.string.isRequired
+// var newplayers = players.filter(function (playerObject) {
+//   return playerObject.name === "Tom Brady";
+// });
 
-};
 
-export default Player;
+
+export default PlayerSearch;

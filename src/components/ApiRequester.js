@@ -1,14 +1,23 @@
 
 import React, { Component } from 'react';
 import axios from "axios";
+import Player from './Player'
+import PlayerList from './PlayerList'
 
 class ApiRequester extends Component {
+  // default State object
 
-componentDidMount(cachedName) {
-    console.log(cachedName)
+  state = {
+    week: 2,
+    players: [],
+    selectedPlayers: []
+  };
+
+componentDidMount() {
+  
     let weekNo =3
 
-    axios.get("http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week="+ weekNo + "&format=json")
+    axios.get("https://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week="+ weekNo + "&format=json")
     .then(response => {
 
         // create an playersay of players only with relevant data
@@ -16,11 +25,15 @@ componentDidMount(cachedName) {
 
         const players = response.data.players;
 
-        var newplayers = players.filter(function (playerObject) {
-          return playerObject.name === cachedName;
+        var newplayers = players.map(function (playerObject) {
+          return {
+            id: playerObject.id,
+            name: playerObject.name,
+            weekPts: playerObject.weekPts
+          }
         });
 
-        localStorage.setItem(newplayers[0].name, players.selectedPlayers);
+        // localStorage.setItem(newplayers[0].name, players.selectedPlayers);
 
         console.log("Found Players: " + newplayers[0].name )
 
@@ -32,8 +45,8 @@ componentDidMount(cachedName) {
         // the original State object. 
         const newState = Object.assign({}, this.state, {
           players: newplayers,
-          selectedPlayers: roster,
-          week: weekNo
+          selectedPlayers: roster
+        
         });
 
         // store the new state object in the component's state
@@ -44,17 +57,19 @@ componentDidMount(cachedName) {
       })
       .catch(error => console.log(error));
 
-      weekNo++
-    
-
-      axios.get("http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week="+ weekNo + "&format=json")
-      .then(response => {
-        
-        const newWeek = response.data.players;
-          // create an playersay of players only with relevant data
-          console.log("week " +weekNo +" stats" + newWeek[213].weekPts);
-      })
+     
   }
 
+  render() {
+    return (
+      <div >
+        <Player players={this.state.players} />
+        <PlayerList players={this.state.players} />
+
+   
+
+      </div>
+    );
+  }
 }
   export default ApiRequester;
