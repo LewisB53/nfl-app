@@ -4,7 +4,7 @@ import React from "react";
 import Player from "./Player";
 
 
-function PlayerList(props) {
+function Roster(props) {
   return (
     <div> Your Roster
       {props.players.map(c => <Player key={c.id} name={c.name} weekPts={c.weekPts}/>)}
@@ -12,4 +12,4 @@ function PlayerList(props) {
   ); 
 } 
 
-export default PlayerList;
+export default Roster;
