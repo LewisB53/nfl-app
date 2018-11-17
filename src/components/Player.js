@@ -6,6 +6,8 @@ function Player(props) {
     <div className="Player">
       <span>{props.name}</span>
       <span> Fantasy Points {props.weekPts} </span>
+      <span> index {props.index} </span>
+
     </div>
   );
 }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ApiRequester from '../components/ApiRequester'
-import PlayerSearch from '../components/PlayerSearch'
-import StatsToDate from '../components/StatsToDate'
 
 class Main extends Component {
 
@@ -10,8 +8,6 @@ class Main extends Component {
             <div>
                 <header>
                 <ApiRequester/>
-                <PlayerSearch/>
-                <StatsToDate/>
                 </header>
             </div>
         );

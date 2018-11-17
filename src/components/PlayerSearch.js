@@ -1,64 +1,88 @@
-import React from 'react';
+import React, {Component} from "react";
 
-class PlayerSearch extends React.Component {
+// import the Contact component
+import Player from "./Player";
+
+class PlayerSearch extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { hits: null };
+    this.state = {value: '',
+                  selected: {},
+                  newplayers:{}
+                };
+
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSearch = (e) => {
-    e.preventDefault();
-
-    const { value } = this.input;
-
-    if (value === '') {
-      return;
-    }
-
-    const cachedHits = localStorage.getItem(value);
-    if (cachedHits) {
-      this.setState({ hits: JSON.parse(cachedHits) });
-      return;
-    }
-
-    fetch('https://hn.algolia.com/api/v1/search?query=' + value)
-      .then(response => response.json())
-      .then(result => this.onSetResult(result, value));
+  handleChange(event) {
+    this.setState({value: event.target.value
+     
+    });
+    console.log("props before submit" + this.props);
   }
 
-  onSetResult = (result, key) => {
-    localStorage.setItem(key, JSON.stringify(result.hits));
-    this.setState({ hits: result.hits });
+  handleSubmit(event,newplayers) {
+
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+ 
+    console.log("on submit" + this.state.newplayers);
+
+    newplayers = this.props.selected.filter(c => { 
+      if (c.name === this.state.value) 
+      return { 
+          id: c.id, 
+          name: c.name, 
+          weekPts: c.weekPts
+        
+      }; 
+      this.setState({
+        newplayers: this.props.selected[0]
+      });
+      return newplayers;
+    }); 
+    console.log("This IS the player objst found" + newplayers[0] );
+
+  
+    
+    
+    
+    console.log(newplayers);
+    console.log("player object" + this.state.selected[0]);
+    console.log("whole player list" + this.props.selected)
+
+  return newplayers
   }
+   
+  
+  
 
   render() {
-    return (
-      <div>
-        <h1>Search Hacker News with Local Storage</h1>
-        <p>
-          There shouldn't be a second network request,
-          when you search for something twice.
-        </p>
+    
+  return (
+    <div>         
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      
+      <p>Found Player: VALUE FROM TEXT BOX HERE {this.state.value}</p>
+      {this.props.selected.map(c => <Player key={c.id} name={c.name} weekPts={c.weekPts} index={c.index}/>)}
+      Here is the state:  {this.state.newplayers[0]}
+     
+     
 
-        <form type="submit" onSubmit={this.onSearch}>
-          <input type="text" ref={node => this.input = node} />
-          <button type="button">Search</button>
-        </form>
-
-        {
-          this.state.hits &&
-          this.state.hits.map(item => <div key={item.objectID}>{item.title}</div>)
-        }
-      </div>
-    );
-  }
+    
+     </div> 
+  ); 
+} 
 }
-
-// var newplayers = players.filter(function (playerObject) {
-//   return playerObject.name === "Tom Brady";
-// });
-
 
 
 export default PlayerSearch;
