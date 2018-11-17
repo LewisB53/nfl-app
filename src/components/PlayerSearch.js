@@ -3,13 +3,17 @@ import React, {Component} from "react";
 // import the Contact component
 import Player from "./Player";
 
+
+let aboveClass = [];
+
 class PlayerSearch extends Component {
 
   constructor(props) {
     super(props);
     this.state = {value: '',
                   selected: {},
-                  newplayers:{}
+                  newplayers:null, 
+                  index: 0
                 };
 
 
@@ -29,28 +33,35 @@ class PlayerSearch extends Component {
     alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
  
-    console.log("on submit" + this.state.newplayers);
+    console.log("on submit you found const above class" + aboveClass);
 
-    newplayers = this.props.selected.filter(c => { 
+    aboveClass = this.props.selected.filter(c => { 
       if (c.name === this.state.value) 
       return { 
           id: c.id, 
           name: c.name, 
-          weekPts: c.weekPts
+          weekPts: c.weekPts,
+          
         
       }; 
+    
       this.setState({
-        newplayers: this.props.selected[0]
+        newplayers: aboveClass
       });
       return newplayers;
     }); 
-    console.log("This IS the player objst found" + newplayers[0] );
+    const playerData = Object.keys( aboveClass ) .map( igKey => {
+      return playerData[igKey];
+  } )
+ 
+
+    console.log("This IS the player objst found" + playerData );
 
   
     
     
     
-    console.log(newplayers);
+    console.log("this is the state" + this.state.newplayers);
     console.log("player object" + this.state.selected[0]);
     console.log("whole player list" + this.props.selected)
 
@@ -74,6 +85,8 @@ class PlayerSearch extends Component {
       
       <p>Found Player: VALUE FROM TEXT BOX HERE {this.state.value}</p>
       {this.props.selected.map(c => <Player key={c.id} name={c.name} weekPts={c.weekPts} index={c.index}/>)}
+      
+
       Here is the state:  {this.state.newplayers[0]}
      
      

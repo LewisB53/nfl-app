@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Player from './Player'
 import PlayerList from './PlayerList'
-import PlayerSearch from './PlayerSearch';
+import NewPlayerSearch from './NewPlayerSearch';
 
 class ApiRequester extends Component {
   // default State object
@@ -22,7 +22,7 @@ componentDidMount() {
     .then(response => {
 
         // create an playersay of players only with relevant data
-        console.log("week " +weekNo +" stats" + response.data.players);
+        console.log("week " +weekNo +" stats" + response.data.players[0]);
 
         const players = response.data.players;
         var newplayers = players.map(function (playerObject, index) {
@@ -31,7 +31,7 @@ componentDidMount() {
             id: playerObject.id,
             name: playerObject.name,
             weekPts: playerObject.weekPts,
-            index: index
+          
           }
         });
 
@@ -41,7 +41,10 @@ componentDidMount() {
 
         
 
-        const roster = [newplayers[0]];
+        let roster = [newplayers[0], newplayers[2], newplayers[3],newplayers[4],newplayers[6]]
+        
+        
+        ;
 
         // create a new "State" object without mutating 
         // the original State object. 
@@ -65,9 +68,9 @@ componentDidMount() {
   render() {
     return (
       <div >
-        <Player players={this.state.players} />
-        {/* <PlayerList players={this.state.players} /> */}
-        <PlayerSearch selected={this.state.players} />
+        {/* <Player players={this.state.players} /> */}
+        <PlayerList players={this.state.players} />
+        <NewPlayerSearch selectedPlayers={this.state.players} />
 
    
 

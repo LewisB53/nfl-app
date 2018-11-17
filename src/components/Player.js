@@ -12,9 +12,9 @@ function Player(props) {
   );
 }
 
-Player.propTypes = {
-  name: PropTypes.string.isRequired
+// Player.propTypes = {
+//   name: PropTypes.string.isRequired
 
-};
+// };
 
 export default Player;
