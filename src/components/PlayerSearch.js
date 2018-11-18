@@ -10,18 +10,18 @@ class PlayerSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {value: '',
-                 
                   newplayers:null, 
                   selectedPosition: "QB"
                 };
   }
 
 handleChange(e) {
+  
   this.setState({value: e.target.value});
 }
 
 
-handleSubmit(e, onClickPos) {
+handleSubmit(e) {
   e.preventDefault();
   // console.log(props.selectedPlayers[igKey].name);
   //  console.log(onClickPos);
@@ -31,7 +31,7 @@ handleSubmit(e, onClickPos) {
           
           return [...Array( this.props.selectedPlayers[igKey] )].map( ( _, i ) => {
         
-          if(this.props.selectedPlayers[igKey].name === "Tom Brady")
+          if(this.props.selectedPlayers[igKey].name === this.state.value)
               return <Player key={igKey + i} type={igKey}  
               name={this.props.selectedPlayers[igKey].name} 
               weekPts={this.props.selectedPlayers[igKey].weekPts} 
@@ -58,17 +58,16 @@ handleSubmit(e, onClickPos) {
       <div>
 <p> Search By Name</p>
 
-<form onClick={(e) =>this.handleClick(e)}>
+<form onClick={(e) =>this.handleSubmit(e)}>
       <label>
         Name:
-        <input type="text" value={this.state.value} onClick={(e) =>this.handleChange(e)}
+        <input type="text" value={this.state.value} onChange={(e) =>this.handleChange(e)}
          />
       </label>
       <input type="submit" value="Submit" />
 </form>
 
 <p></p>
-
 
           {this.state.newplayers}
           
