@@ -4,6 +4,7 @@ import axios from "axios";
 import Player from './Player'
 import PlayerList from './PlayerList'
 import NewPlayerSearch from './NewPlayerSearch';
+import PlayerSearch from './PlayerSearch';
 
 class ApiRequester extends Component {
   // default State object
@@ -78,6 +79,8 @@ componentDidMount() {
         {/* <Player players={this.state.players} /> */}
         <PlayerList players={this.state.players} />
         <NewPlayerSearch selectedPlayers={this.state.players} />
+        <PlayerSearch selectedPlayers={this.state.players} />
+
 
    
 

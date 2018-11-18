@@ -4,97 +4,77 @@ import React, {Component} from "react";
 import Player from "./Player";
 
 
-let aboveClass = [];
-
 class PlayerSearch extends Component {
+
 
   constructor(props) {
     super(props);
     this.state = {value: '',
-                  selected: {},
-                  newplayers:[], 
-                  index: 0
+                 
+                  newplayers:null, 
+                  selectedPosition: "QB"
                 };
-
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value
-     
-    });
-    console.log("props before submit" + this.props);
-  }
+handleChange(e) {
+  this.setState({value: e.target.value});
+}
 
-  handleSubmit(event,newplayers) {
 
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
- 
-    console.log("on submit you found const above class" + aboveClass);
-
-    aboveClass = this.props.selected.filter(c => { 
-      if (c.name === this.state.value) 
-      return { 
-          id: c.id, 
-          name: c.name, 
-          weekPts: c.weekPts,
+handleSubmit(e, onClickPos) {
+  e.preventDefault();
+  // console.log(props.selectedPlayers[igKey].name);
+  //  console.log(onClickPos);
+  
+  let selected = Object.keys( this.props.selectedPlayers )
+      .map( igKey => {
           
+          return [...Array( this.props.selectedPlayers[igKey] )].map( ( _, i ) => {
         
-      }; 
-    
-      this.setState({
-        newplayers: aboveClass
-      });
-      return newplayers;
-    }); 
-    const playerData = Object.keys( aboveClass ) .map( igKey => {
-      return playerData[igKey];
-  } )
- 
+          if(this.props.selectedPlayers[igKey].name === "Tom Brady")
+              return <Player key={igKey + i} type={igKey}  
+              name={this.props.selectedPlayers[igKey].name} 
+              weekPts={this.props.selectedPlayers[igKey].weekPts} 
+              position={this.props.selectedPlayers[igKey].position} 
+              weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
+              />;
+          } );
+      } )
 
-    console.log("This IS the player objst found" + playerData );
-
-  
-    
-    
-    
-    console.log("this is the state" + this.state.newplayers);
-    console.log("player object" + this.state.selected[0]);
-    console.log("whole player list" + this.props.selected)
-
-  return newplayers
+      .reduce((arr, el) => {
+          return arr.concat(el)
+      }, []);
+  if (selected.length === 0) {
+      selected = <p>Please add Some Players!</p>;
   }
-   
+  this.setState({
+      newplayers: selected
+    });
   
-  
+}
 
   render() {
-    
   return (
-    <div>         
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-      
-      <p>Found Player: VALUE FROM TEXT BOX HERE {this.state.value}</p>
-      {this.props.selected.map(c => <Player key={c.id} name={c.name} weekPts={c.weekPts} index={c.index}/>)}
-      
+      <div>
+<p> Search By Name</p>
 
-      Here is the state:  {this.state.newplayers[0]}
-     
-     
+<form onClick={(e) =>this.handleClick(e)}>
+      <label>
+        Name:
+        <input type="text" value={this.state.value} onClick={(e) =>this.handleChange(e)}
+         />
+      </label>
+      <input type="submit" value="Submit" />
+</form>
 
-    
-     </div> 
-  ); 
-} 
+<p></p>
+
+
+          {this.state.newplayers}
+          
+      </div>
+  );
+};
 }
 
 

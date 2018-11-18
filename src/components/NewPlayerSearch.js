@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 
 import Player from './Player';
-import PlayerList from './PlayerList'
 
-let selectedPlayer =[]
-let selectedPosition = "QB";
+let onClickPos = "QB";
 
 class NewPlayerSearch extends Component {
 
@@ -20,18 +18,12 @@ class NewPlayerSearch extends Component {
 handleClick(e, onClickPos) {
     e.preventDefault();
     // console.log(props.selectedPlayers[igKey].name);
- 
- console.log(onClickPos);
-    
-
+    //  console.log(onClickPos);
     
     let selected = Object.keys( this.props.selectedPlayers )
         .map( igKey => {
             
             return [...Array( this.props.selectedPlayers[igKey] )].map( ( _, i ) => {
-                // counter = counter + 1;
-                // console.log(counter);
-            //   console.log(Player)
           
             if(this.props.selectedPlayers[igKey].position === onClickPos)
                 return <Player key={igKey + i} type={igKey}  
@@ -39,11 +31,10 @@ handleClick(e, onClickPos) {
                 weekPts={this.props.selectedPlayers[igKey].weekPts} 
                 position={this.props.selectedPlayers[igKey].position} 
                 weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
-                
                 />;
-
             } );
         } )
+
         .reduce((arr, el) => {
             return arr.concat(el)
         }, []);
@@ -59,7 +50,7 @@ handleClick(e, onClickPos) {
     render() {
     return (
         <div>
-<p> </p>
+<p> Filter By Position</p>
 <span onClick={(e) =>this.handleClick(e, "QB")}>[QB]  </span>
 <span onClick={(e) =>this.handleClick(e,"WR") }>[WR] </span>
 <span onClick={(e) =>this.handleClick(e,"TE")}>[TE] </span>
