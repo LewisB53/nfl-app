@@ -12,7 +12,7 @@ class PlayerSearch extends Component {
     super(props);
     this.state = {value: '',
                   selected: {},
-                  newplayers:null, 
+                  newplayers:[], 
                   index: 0
                 };
 
