@@ -25,11 +25,18 @@ componentDidMount() {
         console.log("week " +weekNo +" stats" + response.data.players[0]);
 
         const players = response.data.players;
+        console.log(players);
         var newplayers = players.map(function (playerObject, index) {
           // console.log("This is the index" + index)
           return {
             id: playerObject.id,
             name: playerObject.name,
+            position: playerObject.position,
+            seasonProjectedPts: playerObject.seasonProjectedPts,
+            seasonPts: playerObject.seasonPts,
+            stats: playerObject.stats,
+            teamAbbr:playerObject.teamAbbr,
+            weekProjectedPts:playerObject.weekProjectedPts,
             weekPts: playerObject.weekPts,
           
           }
