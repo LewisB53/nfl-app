@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-
 import Player from './Player';
 
-let onClickPos = "QB";
-
-class NewPlayerSearch extends Component {
+class SearchByPosition extends Component {
 
     constructor(props) {
       super(props);
@@ -40,6 +37,7 @@ handleClick(e, onClickPos) {
         }, []);
     if (selected.length === 0) {
         selected = <p>Please add Some Players!</p>;
+        return selected;
     }
     this.setState({
         newplayers: selected
@@ -67,4 +65,4 @@ handleClick(e, onClickPos) {
 }
 
 
-export default NewPlayerSearch;
+export default SearchByPosition;

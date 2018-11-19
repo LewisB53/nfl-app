@@ -39,6 +39,7 @@ handleSubmit(e) {
               weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
               />;
           } );
+         
       } )
 
       .reduce((arr, el) => {
@@ -50,7 +51,7 @@ handleSubmit(e) {
   this.setState({
       newplayers: selected
     });
-  
+ 
 }
 
   render() {
