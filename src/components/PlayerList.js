@@ -1,7 +1,7 @@
 import React from "react";
 
 // import the Contact component
-import Player from "./Player";
+import Player from "../components/Player/Player";
 
 
 function PlayerList(props) {

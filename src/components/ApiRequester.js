@@ -4,6 +4,7 @@ import axios from "axios";
 import PlayerList from './PlayerList'
 import PlayerSearch from './PlayerSearch';
 import SearchByPosition from './SearchByPosition';
+import ModalOpener from './ModalOpener';
 
 class ApiRequester extends Component {
   // default State object
@@ -79,9 +80,8 @@ componentDidMount() {
         <PlayerList players={this.state.players} />
         <SearchByPosition selectedPlayers={this.state.players} />
         <PlayerSearch selectedPlayers={this.state.players} />
+        <ModalOpener></ModalOpener>
 
-
-   
 
       </div>
     );

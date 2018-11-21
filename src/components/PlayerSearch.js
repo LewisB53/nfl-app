@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 
 // import the Contact component
-import Player from "./Player";
+import Player from "../components/Player/Player";
+
 
 
 class PlayerSearch extends Component {
