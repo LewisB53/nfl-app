@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './Player.css';
 import PropTypes from "prop-types";
-import PlayerModal from './PlayerModal'
+import ModalOpener from "../ModalOpener";
 
 
 
@@ -16,12 +16,6 @@ constructor(props) {
   }
 
 
-  handleClick(e) {
-    e.preventDefault();
-    
-    console.log("clicked");
-    
-  }
   render(){
   return (
     <div className="Player" onClick={this.openModal}>
@@ -30,7 +24,7 @@ constructor(props) {
       <li> Fantasy Points {this.props.weekPts} </li>
       <li> Projected Points {this.props.weekProjectedPts} </li>
       <li></li>
-
+<ModalOpener></ModalOpener>
     </div>
   );
 }
