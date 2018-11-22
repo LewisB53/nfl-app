@@ -46,11 +46,6 @@ handleSubmit(e) {
                         />
 
                         <ModalOpener  className={classes.Modal}
-                        style={{
-                        transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-                        opacity: this.props.show ? '1' : '0'
-                        }}
-
                         key={igKey + i + 1 } type={igKey}  
                         name={this.props.selectedPlayers[igKey].name} 
                         weekPts={this.props.selectedPlayers[igKey].weekPts} 
@@ -90,7 +85,7 @@ handleSubmit(e) {
 
 <p></p>
 
-          {this.state.newplayers}
+          
           
       </div>
   );

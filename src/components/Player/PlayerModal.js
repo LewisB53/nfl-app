@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './PlayerModal.css';
 
 class PlayerModal extends React.Component {
     render() {

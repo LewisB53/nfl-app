@@ -14,10 +14,10 @@ class ModalOpener extends React.Component {
     render() {
       return (
         <div>
-          <button onClick={() => this.openModal()}>Open modal</button>
+          <button onClick={() => this.openModal()}>View Player Card</button>
           <PlayerModal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-            <h1>Player Card</h1>
-            <span>{this.props.name}</span>
+            <h1>{this.props.name}</h1>
+            <span></span>
             <li> Fantasy Points {this.props.weekPts} </li>
             <li> Projected Points {this.props.weekProjectedPts} </li>
             <li></li>

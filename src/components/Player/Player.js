@@ -24,11 +24,11 @@ componentDidMount(){
 
   render(){
   return (
-    <div className="Player" onClick={this.openModal}>
+    <div className="Player">
       <span>{this.props.name}</span>
-      <li> Fantasy Points {this.props.weekPts} </li>
-      <li> Projected Points {this.props.weekProjectedPts} </li>
-      <li></li>
+      <span> Fantasy Points {this.props.weekPts} </span>
+      <span> Projected Points {this.props.weekProjectedPts} </span>
+      <span></span>
 {/* <ModalOpener>{this.state.newplayer} </ModalOpener>  */}
 
     </div>
