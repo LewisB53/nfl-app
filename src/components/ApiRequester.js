@@ -80,7 +80,7 @@ componentDidMount() {
         <PlayerList players={this.state.players} />
         <SearchByPosition selectedPlayers={this.state.players} />
         <PlayerSearch selectedPlayers={this.state.players} />
-        <ModalOpener></ModalOpener>
+        
 
 
       </div>

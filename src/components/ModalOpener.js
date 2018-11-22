@@ -4,7 +4,9 @@ import PlayerModal from './Player/PlayerModal'
 class ModalOpener extends React.Component {
     constructor(props) {
       super(props)
-      this.state = { isModalOpen: false }
+      this.state ={ isModalOpen: false,
+                    player: this.props
+                  }
     }
   
 
@@ -14,8 +16,11 @@ class ModalOpener extends React.Component {
         <div>
           <button onClick={() => this.openModal()}>Open modal</button>
           <PlayerModal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-            <h1>Modal title</h1>
-            <p>hello</p>
+            <h1>Player Card</h1>
+            <span>{this.props.name}</span>
+            <li> Fantasy Points {this.props.weekPts} </li>
+            <li> Projected Points {this.props.weekProjectedPts} </li>
+            <li></li>
             <p><button onClick={() => this.closeModal()}>Close</button></p>
           </PlayerModal>
         </div>
@@ -23,6 +28,7 @@ class ModalOpener extends React.Component {
     }
     openModal() {
         this.setState({ isModalOpen: true })
+        console.log("in the modal opener" + this.state.player)
       }
     
       closeModal() {
