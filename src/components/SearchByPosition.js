@@ -33,6 +33,8 @@ handleClick(e, onClickPos) {
                                 weekPts={this.props.selectedPlayers[igKey].weekPts} 
                                 position={this.props.selectedPlayers[igKey].position} 
                                 weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
+                                ownedBy={this.props.selectedPlayers[igKey].ownedBy} 
+
                             />
 
                             <ModalOpener  className={classes.Modal}
@@ -41,7 +43,7 @@ handleClick(e, onClickPos) {
                                 opacity: this.props.show ? '1' : '0'
                             }}
 
-                            key={igKey + i + 1 } type={igKey}  
+                            key={igKey + i + "1" } type={igKey}  
                             name={this.props.selectedPlayers[igKey].name} 
                             weekPts={this.props.selectedPlayers[igKey].weekPts} 
                             position={this.props.selectedPlayers[igKey].position} 

@@ -43,6 +43,8 @@ handleSubmit(e) {
                         weekPts={this.props.selectedPlayers[igKey].weekPts} 
                         position={this.props.selectedPlayers[igKey].position} 
                         weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
+                        ownedBy={this.props.selectedPlayers[igKey].ownedBy} 
+
                         />
 
                         <ModalOpener  className={classes.Modal}
@@ -85,7 +87,7 @@ handleSubmit(e) {
 
 <p></p>
 
-          
+          {this.state.newplayers}
           
       </div>
   );

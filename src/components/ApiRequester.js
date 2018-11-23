@@ -4,6 +4,8 @@ import axios from "axios";
 import PlayerList from './PlayerList'
 import PlayerSearch from './PlayerSearch';
 import SearchByPosition from './SearchByPosition';
+import Roster from './Roster';
+
 import ModalOpener from './ModalOpener';
 
 class ApiRequester extends Component {
@@ -39,6 +41,7 @@ componentDidMount() {
             teamAbbr:playerObject.teamAbbr,
             weekProjectedPts:playerObject.weekProjectedPts,
             weekPts: playerObject.weekPts,
+            ownedBy: "NaeBody"
           
           }
         });
@@ -80,6 +83,8 @@ componentDidMount() {
         <PlayerList players={this.state.players} />
         <SearchByPosition selectedPlayers={this.state.players} />
         <PlayerSearch selectedPlayers={this.state.players} />
+        <Roster selectedPlayers={this.state.players} />
+
         
 
 

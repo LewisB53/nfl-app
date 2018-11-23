@@ -5,7 +5,8 @@ class ModalOpener extends React.Component {
     constructor(props) {
       super(props)
       this.state ={ isModalOpen: false,
-                    player: this.props
+                    player: this.props,
+                    ownedBy: null
                   }
     }
   
@@ -15,6 +16,8 @@ class ModalOpener extends React.Component {
       return (
         <div>
           <button onClick={() => this.openModal()}>View Player Card</button>
+          
+          
           <PlayerModal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
             <h1>{this.props.name}</h1>
             <span></span>
@@ -34,6 +37,8 @@ class ModalOpener extends React.Component {
       closeModal() {
         this.setState({ isModalOpen: false })
       }
+
+
 
   }
 
