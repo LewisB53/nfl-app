@@ -10,7 +10,8 @@ class PlayerModal extends React.Component {
       return (
         <div> 
           <div className = "modalStyle" >{this.props.children}</div>
-          <div className = "backdropStyle" onClick={e => this.close(e)}/>}
+          <div className = "backdropStyle" onClick={e => this.close(e)}/>
+          
         </div>
       )
     }

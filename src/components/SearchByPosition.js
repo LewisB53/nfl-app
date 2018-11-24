@@ -27,29 +27,14 @@ handleClick(e, onClickPos) {
             return [...Array( this.props.selectedPlayers[igKey] )].map( ( _, i ) => {
           
             if(this.props.selectedPlayers[igKey].position === onClickPos)
-                return <Auxx>
-                            <Player key={igKey + i} type={igKey}  
-                                name={this.props.selectedPlayers[igKey].name} 
-                                weekPts={this.props.selectedPlayers[igKey].weekPts} 
-                                position={this.props.selectedPlayers[igKey].position} 
-                                weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
-                                ownedBy={this.props.selectedPlayers[igKey].ownedBy} 
-
-                            />
-
-                            <ModalOpener  className={classes.Modal}
-                            style={{
-                                transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-                                opacity: this.props.show ? '1' : '0'
-                            }}
-
-                            key={igKey + i + "1" } type={igKey}  
+                return <Player key={igKey + i} type={igKey}  
                             name={this.props.selectedPlayers[igKey].name} 
                             weekPts={this.props.selectedPlayers[igKey].weekPts} 
                             position={this.props.selectedPlayers[igKey].position} 
                             weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
-                            />
-                </Auxx>
+                            ownedBy={this.props.selectedPlayers[igKey].ownedBy} 
+                        />
+
             } );
         } )
 

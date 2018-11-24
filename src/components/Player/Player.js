@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './Player.css';
 import PropTypes from "prop-types";
+import ModalOpener from '../ModalOpener'
 
 
 class Player extends Component {
@@ -23,21 +24,21 @@ componentDidMount(){
   console.log(" and the winner is" + this.state.singleplayer )
 }
 
-addPlayer() {
- this.setState({ ownedBy: "Lewis" })
-  
-}
 
   render(){
   return (
     <div className="Player">
-    <button onClick={() => this.addPlayer()}>Add Player to roster</button>
       <span>{this.props.name}</span>
       <span> Fantasy Points {this.props.weekPts} </span>
       <span> Projected Points {this.props.weekProjectedPts} </span>
-      <span> owned By {this.state.ownedBy} </span>
-
-      <span></span>
+      <ModalOpener 
+                        name={this.props.name} 
+                        weekPts={this.props.weekPts} 
+                        position={this.props.position} 
+                        weekProjectedPts={this.props.weekProjectedPts} 
+                        ownedBy = {this.props.ownedBy}
+                        />
+    
 {/* <ModalOpener>{this.state.newplayer} </ModalOpener>  */}
 
     </div>

@@ -14,7 +14,8 @@ class ApiRequester extends Component {
   state = {
     week: 2,
     players: [],
-    selectedPlayers: []
+    selectedPlayers: [],
+    roster: [1,2,3,4]
   };
 
 componentDidMount() {
@@ -76,6 +77,7 @@ componentDidMount() {
      
   }
 
+
   render() {
     return (
       <div >
@@ -83,7 +85,7 @@ componentDidMount() {
         <PlayerList players={this.state.players} />
         <SearchByPosition selectedPlayers={this.state.players} />
         <PlayerSearch selectedPlayers={this.state.players} />
-        <Roster selectedPlayers={this.state.players} />
+     
 
         
 

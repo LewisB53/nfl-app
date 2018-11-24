@@ -2,11 +2,6 @@ import React, {Component} from "react";
 
 // import the Contact component
 import Player from "../components/Player/Player";
-import Auxx from '../hoc/Auxx/Auxx'
-import ModalOpener from './ModalOpener';
-import classes from './Player/Modal.css';
-
-
 
 
 class PlayerSearch extends Component {
@@ -16,7 +11,8 @@ class PlayerSearch extends Component {
     super(props);
     this.state = {value: '',
                   newplayers:null, 
-                  selectedPosition: "QB"
+                  selectedPosition: "QB",
+                  roster: [5,6,7,8]
                 };
   }
 
@@ -37,25 +33,15 @@ handleSubmit(e) {
           return [...Array( this.props.selectedPlayers[igKey] )].map( ( _, i ) => {
         
           if(this.props.selectedPlayers[igKey].name.includes(this.state.value))
-              return <Auxx>
-                        <Player key={igKey + i} type={igKey}  
+              return <Player key={igKey + i} type={igKey}  
                         name={this.props.selectedPlayers[igKey].name} 
                         weekPts={this.props.selectedPlayers[igKey].weekPts} 
                         position={this.props.selectedPlayers[igKey].position} 
                         weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
                         ownedBy={this.props.selectedPlayers[igKey].ownedBy} 
 
-                        />
-
-                        <ModalOpener  className={classes.Modal}
-                        key={igKey + i + 1 } type={igKey}  
-                        name={this.props.selectedPlayers[igKey].name} 
-                        weekPts={this.props.selectedPlayers[igKey].weekPts} 
-                        position={this.props.selectedPlayers[igKey].position} 
-                        weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
-                        />
-
-                    </Auxx>
+                    />
+               
          } );
         } )
 
@@ -70,8 +56,14 @@ handleSubmit(e) {
     });
  
 }
+update(updatedRoster){
+    console.log("got something");
+    this.setState({roster: updatedRoster});
+}
+
 
   render() {
+
   return (
       <div>
 <p> Search By Name</p>
