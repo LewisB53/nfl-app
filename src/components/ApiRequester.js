@@ -12,21 +12,17 @@ class ApiRequester extends Component {
   // default State object
 
   state = {
-    week: 2,
+    week:10,
     players: [],
     selectedPlayers: [],
     roster: [1,2,3,4]
   };
 
 componentDidMount() {
-  
-    let weekNo =3
 
-    axios.get("https://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week="+ weekNo + "&format=json")
+
+    axios.get("https://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&week="+ this.state.week + "&format=json")
     .then(response => {
-
-        // create an playersay of players only with relevant data
-        console.log("week " +weekNo +" stats" + response.data.players[0]);
 
         const players = response.data.players;
         console.log(players);

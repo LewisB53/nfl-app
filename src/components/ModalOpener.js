@@ -7,7 +7,7 @@ class ModalOpener extends React.Component {
       super(props)
       this.state ={ isModalOpen: false,
                     player: this.props,
-                    ownedBy: "Free Agent",
+                    ownedBy: this.props.ownedBy,
                     roster: []
                   }
     }
