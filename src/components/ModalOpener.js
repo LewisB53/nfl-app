@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PlayerModal from './Player/PlayerModal'
 import Auxx from '../hoc/Auxx/Auxx';
+import Roster from './Roster'
 
 class ModalOpener extends React.Component {
     constructor(props) {
@@ -29,7 +30,8 @@ class ModalOpener extends React.Component {
             <li></li>
            
             <p><button onClick={() => this.closeModal()}>Close</button></p>
-            <p><button onClick={() => this.setState({ ownedBy: "Vegas Vigilantes" })}>Add Player to Roster</button></p>
+            <p><button onClick={() => this.setState({ ownedBy: "Vegas Vigilantes" })}>Add Player to Roster </button></p>
+            <Roster player={this.props.name} ></Roster>
           </PlayerModal>
           
         </div>
