@@ -15,7 +15,8 @@ class ApiRequester extends Component {
     week:10,
     players: [],
     selectedPlayers: [],
-    roster: [1,2,3,4]
+    roster: [1,2,3,4],
+    ownedBy: null
   };
 
 componentDidMount() {
@@ -29,6 +30,8 @@ componentDidMount() {
         var newplayers = players.map(function (playerObject, index) {
           // console.log("This is the index" + index)
           return {
+            ownedBy:"No Team",
+            key:index,
             id: playerObject.id,
             name: playerObject.name,
             position: playerObject.position,
@@ -38,13 +41,12 @@ componentDidMount() {
             teamAbbr:playerObject.teamAbbr,
             weekProjectedPts:playerObject.weekProjectedPts,
             weekPts: playerObject.weekPts,
-            ownedBy: "NaeBody"
-          
+           
           }
         });
 
         // localStorage.setItem(newplayers[0].name, players.selectedPlayers);
-
+       
         console.log("Found Players: " + newplayers[0].name )
 
         
@@ -81,13 +83,15 @@ componentDidMount() {
         <PlayerList players={this.state.players} />
         <SearchByPosition selectedPlayers={this.state.players} />
         <PlayerSearch selectedPlayers={this.state.players} />
+        <Roster selectedPlayers={this.state.players} />
      
-
+{this.roster}
         
 
 
       </div>
     );
   }
+
 }
   export default ApiRequester;

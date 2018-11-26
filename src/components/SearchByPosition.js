@@ -10,7 +10,7 @@ class SearchByPosition extends Component {
     constructor(props) {
       super(props);
       this.state = {value: '',
-                   
+                   roster: [1,2,3,4],
                     newplayers:null, 
                     selectedPosition: "QB"
                   };
@@ -64,6 +64,8 @@ handleClick(e, onClickPos) {
 
 
             {this.state.newplayers}
+            {this.state.roster}
+
             
         </div>
     );

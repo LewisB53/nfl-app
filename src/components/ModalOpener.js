@@ -8,7 +8,6 @@ class ModalOpener extends React.Component {
       super(props)
       this.state ={ isModalOpen: false,
                     player: this.props,
-                    ownedBy: this.props.ownedBy,
                     roster: []
                   }
     }
@@ -21,7 +20,7 @@ class ModalOpener extends React.Component {
           <button onClick={() => this.openModal()}>View Player Card</button>
           <PlayerModal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
             <h1>{this.props.name}</h1>
-            <li> Team:  {this.state.ownedBy} </li>
+            <li> Team:  {this.props.ownedBy} </li>
             <span></span>
             <li> Fantasy Points {this.props.weekPts} </li>
             <li> Projected Points {this.props.weekProjectedPts} </li>
@@ -30,8 +29,8 @@ class ModalOpener extends React.Component {
             <li></li>
            
             <p><button onClick={() => this.closeModal()}>Close</button></p>
-            <p><button onClick={() => this.setState({ ownedBy: "Vegas Vigilantes" })}>Add Player to Roster </button></p>
-            <Roster player={this.props.name} ></Roster>
+            <p><button onClick={this.props.handleClick}> Add Player to Roster </button></p>
+            
           </PlayerModal>
           
         </div>
@@ -40,7 +39,7 @@ class ModalOpener extends React.Component {
     }
     openModal() {
         this.setState({ isModalOpen: true })
-        console.log("in the modal opener" + this.state.player)
+        console.log("in the modal opener" + this.state.ownedBy)
       }
     
       closeModal() {

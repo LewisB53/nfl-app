@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ApiRequester from './ApiRequester';
 
 
 class Roster extends Component {
@@ -28,15 +29,15 @@ class Roster extends Component {
           <li onClick={() => this.selected(13)}>Player {this.state.roster[13]}</li>
           <li onClick={() => this.selected(14)}>Player {this.state.roster[14]}</li>
 
-            {this.props.player}
+            {this.props.children}
           </div>
         );
       }
 
       selected(arrayNumber){
-        console.log("Clicked")
+        console.log(this.props)
         let updatedRoster = this.state.roster
-        updatedRoster[arrayNumber] = "new player"
+        updatedRoster[arrayNumber] = this.props.selectedPlayers[0].name
         this.setState({ roster: updatedRoster })
       }
 }
