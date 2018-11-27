@@ -34,6 +34,7 @@ handleSubmit(e) {
         
           if(this.props.selectedPlayers[igKey].name.includes(this.state.value))
               return <Player key={igKey + i} type={igKey}  
+              arrayNo = {igKey}
                         name={this.props.selectedPlayers[igKey].name} 
                         weekPts={this.props.selectedPlayers[igKey].weekPts} 
                         position={this.props.selectedPlayers[igKey].position} 

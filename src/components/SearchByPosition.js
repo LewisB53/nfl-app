@@ -27,7 +27,9 @@ handleClick(e, onClickPos) {
             return [...Array( this.props.selectedPlayers[igKey] )].map( ( _, i ) => {
           
             if(this.props.selectedPlayers[igKey].position === onClickPos)
-                return <Player key={igKey + i} type={igKey}  
+                return <Player key={igKey + i} type={igKey} 
+                            arrayNo = {igKey} 
+                            id={this.props.selectedPlayers[igKey].id} 
                             name={this.props.selectedPlayers[igKey].name} 
                             weekPts={this.props.selectedPlayers[igKey].weekPts} 
                             position={this.props.selectedPlayers[igKey].position} 

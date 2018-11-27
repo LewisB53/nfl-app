@@ -12,7 +12,7 @@ constructor(props) {
 
     this.state = {
       isModalOpen: true,
-      newPlayer: null,
+      player: null,
       ownedBy: null
     };
     this.handleClick = this.handleClick.bind(this);
@@ -32,11 +32,14 @@ console.log(this.props)
       <span> Projected Points {this.props.weekProjectedPts} {this.props.key}</span>
       <ModalOpener  handleClick={this.handleClick} 
                         name={this.props.name} 
+                        key={this.props.key} 
+
                         weekPts={this.props.weekPts} 
                         position={this.props.position} 
                         weekProjectedPts={this.props.weekProjectedPts} 
                         ownedBy = {this.state.ownedBy}
                         />
+                       
     
 
     </div>
@@ -44,6 +47,8 @@ console.log(this.props)
 }
 
 handleClick() {
+
+  localStorage.setItem('ownedPlayer Key', this.props.arrayNo);
   this.setState({
       ownedBy: "Vegas Vigilantes"
   });
