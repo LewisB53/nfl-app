@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import ApiRequester from './ApiRequester';
-import Player from './Player/Player'
 
 
 class Roster extends Component {
@@ -11,42 +9,6 @@ class Roster extends Component {
                 roster: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
                 newplayers: null
             }
-  }
-
-  componentDidMount(){
-
-   let onClickPos = localStorage.getItem('ownedPlayer Key')
-      // console.log(props.selectedPlayers[igKey].name);
-      //  console.log(onClickPos);
-      
-      let selected = Object.keys( this.props.selectedPlayers )
-          .map( igKey => {
-              
-              return [...Array( this.props.selectedPlayers[igKey] )].map( ( _, i ) => {
-            
-              if(this.props.selectedPlayers[igKey].position === onClickPos)
-                  return <Player key={igKey + i} type={igKey}  
-                              name={this.props.selectedPlayers[igKey].name} 
-                              weekPts={this.props.selectedPlayers[igKey].weekPts} 
-                              position={this.props.selectedPlayers[igKey].position} 
-                              weekProjectedPts={this.props.selectedPlayers[igKey].weekProjectedPts} 
-                              ownedBy={this.props.selectedPlayers[igKey].ownedBy} 
-                          />
-  
-              } );
-          } )
-  
-          .reduce((arr, el) => {
-              return arr.concat(el)
-          }, []);
-      if (selected.length === 0) {
-          selected = <p>Please add Some Players!</p>;
-          return selected;
-      }
-      this.setState({
-          newplayers: selected
-        });
-      console.log(this.state.newplayers)
   }
 
     render(){
@@ -75,11 +37,9 @@ class Roster extends Component {
       }
 
       selected(arrayNumber){
-        console.log(this.props)
         let updatedRoster = this.state.roster
         let onClickPos = localStorage.getItem('ownedPlayer Key')
         updatedRoster[arrayNumber] = this.props.selectedPlayers[onClickPos].name
-        console.log(this.props.playerKey)
         this.setState({ roster: updatedRoster })
       }
 }

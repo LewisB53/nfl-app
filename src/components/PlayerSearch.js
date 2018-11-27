@@ -34,7 +34,7 @@ handleSubmit(e) {
         
           if(this.props.selectedPlayers[igKey].name.includes(this.state.value))
               return <Player key={igKey + i} type={igKey}  
-              arrayNo = {igKey}
+                        arrayNo = {igKey}
                         name={this.props.selectedPlayers[igKey].name} 
                         weekPts={this.props.selectedPlayers[igKey].weekPts} 
                         position={this.props.selectedPlayers[igKey].position} 
@@ -67,20 +67,19 @@ update(updatedRoster){
 
   return (
       <div>
-<p> Search By Name</p>
+        <p> Search By Name</p>
 
-<form onClick={(e) =>this.handleSubmit(e)}>
-      <label>
-        Name:
-        <input type="text" value={this.state.value} onChange={(e) =>this.handleChange(e)}
-         />
-      </label>
-      <input type="submit" value="Submit" />
-</form>
+        <form onClick={(e) =>this.handleSubmit(e)}>
+            <label>
+                Name:
+                <input type="text" value={this.state.value} onChange={(e) =>this.handleChange(e)}/>
+            </label>
+            <input type="submit" value="Submit" />
+        </form>
 
-<p></p>
-
-          {this.state.newplayers}
+        <p></p>
+        
+        {this.state.newplayers}
           
       </div>
   );

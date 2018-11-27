@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import './Player.css';
 import PropTypes from "prop-types";
 import ModalOpener from '../ModalOpener'
-import Roster from '../Roster'
 
 
 class Player extends Component {
@@ -18,22 +17,15 @@ constructor(props) {
     this.handleClick = this.handleClick.bind(this);
   }
 
-componentDidMount(){
-console.log(this.props)
- 
-}
-
 
   render(){
   return (
     <div className="Player">
       <span>{this.props.name}</span>
       <span> Fantasy Points {this.props.weekPts} </span>
-      <span> Projected Points {this.props.weekProjectedPts} {this.props.key}</span>
+      <span> Projected Points {this.props.weekProjectedPts} </span>
       <ModalOpener  handleClick={this.handleClick} 
                         name={this.props.name} 
-                        key={this.props.key} 
-
                         weekPts={this.props.weekPts} 
                         position={this.props.position} 
                         weekProjectedPts={this.props.weekProjectedPts} 
@@ -52,13 +44,13 @@ handleClick() {
   this.setState({
       ownedBy: "Vegas Vigilantes"
   });
-  console.log(this.state.ownedBy)
+    console.log(this.state.ownedBy)
 }
 
-// Player.propTypes = {
-//   name: PropTypes.string.isRequired
-// };
 
 }
+Player.propTypes = {
+  name: PropTypes.string.isRequired
+};
 
 export default Player;

@@ -1,14 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PlayerModal from './Player/PlayerModal'
-import Auxx from '../hoc/Auxx/Auxx';
-import Roster from './Roster'
 
 class ModalOpener extends React.Component {
     constructor(props) {
       super(props)
       this.state ={ isModalOpen: false,
                     player: this.props,
-                    roster: []
                   }
     }
   
@@ -24,8 +21,6 @@ class ModalOpener extends React.Component {
             <span></span>
             <li> Fantasy Points {this.props.weekPts} </li>
             <li> Projected Points {this.props.weekProjectedPts} </li>
-           
-
             <li></li>
            
             <p><button onClick={() => this.closeModal()}>Close</button></p>
@@ -39,13 +34,11 @@ class ModalOpener extends React.Component {
     }
     openModal() {
         this.setState({ isModalOpen: true })
-        console.log("in the modal opener" + this.state.ownedBy)
       }
     
       closeModal() {
         this.setState({ isModalOpen: false })
       }
-
 
 
   }
