@@ -6,7 +6,7 @@ class Roster extends Component {
   constructor(props) {
     super(props)
     this.state ={
-                roster: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+                roster: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
                 newplayers: null
             }
   }
@@ -39,8 +39,27 @@ class Roster extends Component {
       selected(arrayNumber){
         let updatedRoster = this.state.roster
         let onClickPos = localStorage.getItem('ownedPlayer Key')
-        updatedRoster[arrayNumber] = this.props.selectedPlayers[onClickPos].name
-        this.setState({ roster: updatedRoster })
+        
+        updatedRoster.forEach((element) => {
+          console.log(element);
+      });
+      
+      var i;
+for (i = 0; i < updatedRoster.length; i++) { 
+
+        if(updatedRoster[arrayNumber] === null){
+           updatedRoster[arrayNumber] = this.props.selectedPlayers[onClickPos].name 
+        }
+         
+          else if(updatedRoster[arrayNumber] !== null)
+          console.log("Player already in this slot")
+
+          this.setState({ roster: updatedRoster })
+}
+    
+
+
+
       }
 }
 

@@ -4,6 +4,7 @@ import axios from "axios";
 import PlayerSearch from './PlayerSearch';
 import SearchByPosition from './SearchByPosition';
 import Roster from './Roster';
+import {Route} from 'react-router-dom';
 
 class ApiRequester extends Component {
   // default State object
@@ -62,6 +63,7 @@ componentDidMount() {
         <SearchByPosition selectedPlayers={this.state.players} />
         <PlayerSearch selectedPlayers={this.state.players} />
         <Roster selectedPlayers={this.state.players} />
+        <Route path="/Roster" component={Roster}/>
      
 
       </div>
