@@ -44,7 +44,7 @@ handleClick(e, onClickPos) {
     this.setState({
         newplayers: selected
       });
-    
+
 }
 
     render() {

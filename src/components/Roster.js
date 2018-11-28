@@ -39,6 +39,8 @@ class Roster extends Component {
       selected(arrayNumber){
         let updatedRoster = this.state.roster
         let onClickPos = localStorage.getItem('ownedPlayer Key')
+        let playerStore = localStorage.getItem('Full Api Players')
+
         
         updatedRoster.forEach((element) => {
           console.log(element);
